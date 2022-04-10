@@ -1,0 +1,43 @@
+ALGORITHM problemOneSolutionTwo
+VAR
+	setOne,setTwo : ARRAY_OF INTEGER[10];
+	i,counter : INTEGER := 0;
+	htab := HASH_TABLE<INTEGER,INTEGER>;
+	setOfhtabKeys : ARRAY_OF INTEGER[20];
+	sum : INTEGER := 0;
+BEGIN
+
+	setOne := [3, 1, 7, 9];  
+	setTwo := [2, 4, 1, 9, 3];
+	
+	
+	FOR i FROM 0 TO setOne.length-1 DO
+		IF (htab.lookup(setOne[i]) = TRUE) THEN
+			counter := htab.get(setOne[i]);
+			htab.insert(setOne[i],counter+1);
+		ELSE
+			htab.insert(setOne[i],1);
+		END_IF
+	END_FOR
+	
+	FOR i FROM 0 TO setTwo.length-1 DO
+		IF (htab.lookup(setTwo[i]) = TRUE) THEN
+			counter := htab.get(setTwo[i]);
+			htab.insert(setTwo[i],counter+1);
+		ELSE
+			htab.insert(setTwo[i],1);
+		END_IF
+	END_FOR
+		
+	setOfhtabKeys := htab.getKeys();
+	
+
+	FOR i FROM 0 TO setOfhtabKeys.length-1 DO
+		IF(htab.get(setOfhtabKeys[i] = 1)
+			sum := sum + setOfhtabKeys[i];
+		END_IF
+	END_FOR
+	
+	WRITE(sum);
+	
+END
